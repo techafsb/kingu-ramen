@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kingu Ramen Ampang | Halal Ramen at The Campus by Kingu Kongu</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Kingu Ramen by Kingu Kongu di The Campus Ampang. Nikmati ramen Jepun 100% Halal dengan kuah pekat beraroma, mee kenyal, Yummy Truffle, Yuzu Lover, dan snek lazat.">
+    <meta name="keywords" content="halal ramen Ampang, ramen The Campus Ampang, Kingu Ramen menu, Japanese food Ampang, Kingu Kongu halal, halal ramen KL">
+    <meta name="author" content="Kingu Ramen by Kingu Kongu">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kingu Ramen Ampang | No Ramen No Life">
+    <meta property="og:description" content="Pengalaman ramen Jepun Halal serba baharu oleh Kingu Kongu di The Campus Ampang.">
+    <meta property="og:image" content="assets/images/kingu_ramen_counter_trio.jpg">
+    <meta property="og:type" content="restaurant">
+    
+    <!-- Restaurant Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Kingu Ramen by Kingu Kongu",
+      "image": "assets/images/kingu_ramen_counter_trio.jpg",
+      "telephone": "+60182875277",
+      "priceRange": "RM20 - RM40",
+      "servesCuisine": ["Japanese", "Ramen", "Halal"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "G7, Ground Floor, The Campus Ampang, Batu 5, Jalan Kerja Air Lama, Ukay Heights",
+        "addressLocality": "Ampang",
+        "addressRegion": "Selangor",
+        "postalCode": "68000",
+        "addressCountry": "MY"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "reviewCount": "86"
+      }
+    }
+    </script>
+
+    <!-- Favicon & Touch Icon -->
+    <link rel="icon" type="image/jpeg" href="assets/images/kingu_logo_mascot.jpg">
+    <link rel="apple-touch-icon" href="assets/images/kingu_logo_mascot.jpg">
+
+    <!-- Google Fonts Luxury Display Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Noto+Serif+JP:wght@400;500;600;700;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css?v=luxury-3.0">
+
+    <!-- Three.js (WebGL 3D Engine via CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/environments/RoomEnvironment.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+</head>
+<body>
+
+    <!-- Reading Progress Bar -->
+    <div id="scroll-progress-bar"></div>
+
+    <!-- Floating Vertical Slide Navigation Dots (1-Viewport Indicators) -->
+    <nav class="viewport-dots-nav" id="viewport-dots-nav" aria-label="Navigasi Slaid Halaman">
+        <a href="#hero" class="viewport-dot active" data-target="hero" title="Utama" data-i18n-title="dot_hero"><span class="dot-text" data-i18n="dot_hero">Utama</span></a>
+        <a href="#signature" class="viewport-dot" data-target="signature" title="Best Seller" data-i18n-title="dot_signature"><span class="dot-text" data-i18n="dot_signature">Best Seller</span></a>
+        <a href="#full-menu" class="viewport-dot" data-target="full-menu" title="Menu" data-i18n-title="dot_menu"><span class="dot-text" data-i18n="dot_menu">Menu</span></a>
+        <a href="#vip-club" class="viewport-dot" data-target="vip-club" title="VIP Pas" data-i18n-title="dot_vip"><span class="dot-text" data-i18n="dot_vip">VIP Pas</span></a>
+        <a href="#halal-story" class="viewport-dot" data-target="halal-story" title="Janji Halal" data-i18n-title="dot_halal"><span class="dot-text" data-i18n="dot_halal">Janji Halal</span></a>
+        <a href="#experience" class="viewport-dot" data-target="experience" title="Suasana" data-i18n-title="dot_experience"><span class="dot-text" data-i18n="dot_experience">Suasana</span></a>
+        <a href="#reviews" class="viewport-dot" data-target="reviews" title="Ulasan" data-i18n-title="dot_reviews"><span class="dot-text" data-i18n="dot_reviews">Ulasan</span></a>
+        <a href="#faq" class="viewport-dot" data-target="faq" title="FAQ" data-i18n-title="dot_faq"><span class="dot-text" data-i18n="dot_faq">FAQ</span></a>
+        <a href="#location" class="viewport-dot" data-target="location" title="Lokasi" data-i18n-title="dot_location"><span class="dot-text" data-i18n="dot_location">Lokasi</span></a>
+    </nav>
+
+
+    <!-- Golden Ember Particle Canvas -->
+    <canvas id="ember-canvas"></canvas>
+
+    <!-- Ambient Glow Pools -->
+    <div class="ambient-glow ambient-glow-1"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+    <div class="ambient-glow ambient-glow-3"></div>
+    <div class="bg-asanoha-pattern"></div>
+
+    <!-- Japanese Kanji Watermark -->
+    <div class="kanji-bg-watermark" style="top: 15%; right: 4%;">キングラーメン</div>
+    <div class="kanji-bg-watermark" style="top: 55%; left: 2%;">極上拉麺</div>
+
+    <!-- ==========================================================================
+       HEADER NAVIGATION (Glassmorphism Island)
+       ========================================================================== -->
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="#hero" class="brand-logo">
+                <img src="assets/images/kingu_logo_mascot.jpg" alt="Logo Kingu Ramen" class="brand-logo-img">
+                <div class="logo-text-wrap">
+                    <span class="brand-name">KINGU RAMEN</span>
+                    <span class="brand-sub">BY KINGU KONGU</span>
+                </div>
+            </a>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#signature" class="nav-link" data-i18n="nav_bestseller">Best Seller</a></li>
+                <li><a href="#full-menu" class="nav-link" data-i18n="nav_menu">Menu</a></li>
+                <li><a href="#vip-club" class="nav-link" data-i18n="nav_vip">VIP</a></li>
+                <li><a href="#location" class="nav-link" data-i18n="nav_contact">Hubungi Kami</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Language Switcher Pill (Bilingual BM / EN) -->
+                <div class="lang-switch" id="lang-switch">
+                    <button class="lang-btn active" data-lang="bm" title="Bahasa Melayu">BM</button>
+                    <span class="lang-sep">|</span>
+                    <button class="lang-btn" data-lang="en" title="English">EN</button>
+                </div>
+
+                <button class="nav-toggle" id="nav-toggle" aria-label="Buka menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <!-- Table Reservation Button -->
+                <button class="btn-reserve-nav" id="btn-reserve-nav" onclick="window.kinguApp.openReservationModal()">
+                    <span data-i18n="nav_reserve">Tempah Meja</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==========================================================================
+       HERO SECTION (3D INTERACTIVE STAGE & AWWWARDS TYPOGRAPHY)
+       ========================================================================== -->
+    <section class="hero-section" id="hero">
+        <div class="hero-wrapper">
+            <!-- Left: Typography & Story -->
+            <div class="hero-content">
+                <!-- Live Status Beacon -->
+                <div class="hero-status-pill">
+                    <span class="beacon-dot"></span>
+                    <span data-i18n="hero_status">BUKA HARI INI • 11:30 AM - 10:00 PM • THE CAMPUS AMPANG</span>
+                </div>
+
+                <div class="hero-jp-sub">キングラーメン • 一期一会</div>
+                <p class="hero-eyebrow" data-i18n="hero_eyebrow">A new ramen experience by Kingu Kongu</p>
+
+                <h1 class="hero-title">
+                    <span class="hero-title-line" data-i18n="hero_title_1">No Ramen</span>
+                    <span class="hero-title-line highlight-red" data-i18n="hero_title_2">No Life</span>
+                </h1>
+
+                <p class="hero-desc" data-i18n="hero_desc">
+                    Bold broth, springy noodles and big comfort — served halal in the heart of The Campus Ampang.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="#full-menu" class="btn-primary">
+                        <span data-i18n="hero_cta_menu">View The Menu</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a class="btn-secondary" href="https://maps.google.com/?q=Kingu+Ramen+The+Campus+Ampang" target="_blank" rel="noopener">
+                        <span data-i18n="hero_cta_directions">Get Directions</span>
+                    </a>
+                </div>
+
+                <!-- Hero Metrics Strip -->
+                <div class="hero-metrics">
+                    <div class="metric-item">
+                        <span class="metric-num">RM 25 - 30</span>
+                        <span class="metric-label" data-i18n="hero_metric_price">Harga Mangkuk Utama</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-num" data-i18n="hero_simmer_val">12 Jam</span>
+                        <span class="metric-label" data-i18n="hero_metric_simmer">Rendihan Sup Kolagen</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-num">4.7 ★</span>
+                        <span class="metric-label" data-i18n="hero_metric_reviews">Ulasan Pelanggan Google</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: interactive 3D GLB ramen bowl -->
+            <div class="hero-3d-stage">
+                <div class="stage-glow-disc"></div>
+                <canvas id="ramen-canvas" aria-label="Putar mangkuk ramen 360 darjah"></canvas>
+
+                <!-- 3D Camera & Scene Controls Toolbar -->
+                <div class="stage-camera-toolbar" id="stage-camera-toolbar">
+                    <button class="cam-tool-btn active" data-cam="hero" onclick="window.kinguApp.setCameraAngle('hero', this)">
+                        <span data-i18n="hero_cam_hero">45° Hero</span>
+                    </button>
+                    <button class="cam-tool-btn" data-cam="topdown" onclick="window.kinguApp.setCameraAngle('topdown', this)">
+                        <span data-i18n="hero_cam_topdown">Top-Down</span>
+                    </button>
+                    <button class="cam-tool-btn" data-cam="closeup" onclick="window.kinguApp.setCameraAngle('closeup', this)">
+                        <span data-i18n="hero_cam_zoom">Zoom In</span>
+                    </button>
+                    <button class="cam-tool-btn active" id="btn-toggle-steam" onclick="window.kinguApp.toggleSteam(this)" title="Hidup / Matikan Stim Broth">
+                        <span data-i18n="hero_cam_steam">Stim Broth</span>
+                    </button>
+                    <button class="cam-tool-btn active" id="btn-toggle-spin" onclick="window.kinguApp.toggleAutoSpin(this)" title="Putaran Automatik">
+                        <span data-i18n="hero_cam_spin">Putaran Auto</span>
+                    </button>
+                </div>
+
+                <div class="hotspot-badge" style="top: 18%; right: 6%;" onclick="window.kinguApp.openDishModal('mala_beef')">
+                    <span class="hotspot-dot"></span>
+                    <span data-i18n="hero_hotspot">Braised Beef & Onsen Tamago</span>
+                </div>
+
+                <div class="interactive-hint">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <span data-i18n="hero_hint">Seret untuk pusing 360° atau pilih sudut kamera di bawah</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Bottom Ambient Ticker Strip -->
+        <div class="marquee-strip">
+            <div class="marquee-content">
+                <span class="marquee-item"><span class="marquee-dot"></span> NO RAMEN NO LIFE</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> キングラーメン</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> 100% HALAL JAPANESE COMFORT</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> YUMMY TRUFFLE BESTSELLER</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> YUZU LOVER CITRUS FRESH</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> THE CAMPUS AMPANG G-07</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> BY KINGU KONGU</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> NO RAMEN NO LIFE</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> キングラーメン</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> 100% HALAL JAPANESE COMFORT</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> YUMMY TRUFFLE BESTSELLER</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> YUZU LOVER CITRUS FRESH</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> THE CAMPUS AMPANG G-07</span>
+                <span class="marquee-item"><span class="marquee-dot"></span> BY KINGU KONGU</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       SIGNATURE BOWLS SHOWCASE (BEST SELLER)
+       ========================================================================== -->
+    <section class="section-block" id="signature">
+        <!-- Background Video with 50% Dark Overlay -->
+        <div class="bestseller-video-bg-wrap">
+            <video class="bestseller-bg-video" autoplay muted loop playsinline preload="auto">
+                <source src="assets/videos/monkey_eating_noodles.mp4" type="video/mp4">
+            </video>
+            <div class="bestseller-video-overlay"></div>
+        </div>
+
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-eyebrow" data-i18n="bestseller_eyebrow">Pilihan Utama Pelanggan</span>
+                <h2 class="section-title" data-i18n="bestseller_title">Best Seller Ramen</h2>
+                <p class="section-desc" data-i18n="bestseller_desc">
+                    Sama ada anda gemarkan aroma truffle mewah, kesegaran buah sitrus yuzu, kemanisan sup ketam atau kepedasan mala yang membara — setiap mangkuk disediakan dengan teliti dan penuh rasa.
+                </p>
+            </div>
+
+            <div class="signature-grid">
+                <!-- 1. Yummy Truffle Ramen -->
+                <div class="ramen-card">
+                    <div class="ramen-img-wrap">
+                        <img src="assets/images/kingu_shoyu_truffle_real.jpg" alt="Yummy Truffle Ramen" class="ramen-img">
+                        <span class="ramen-tag-floating" data-i18n="bestseller_1_tag">Best Seller #1</span>
+                        <span class="ramen-price-floating">RM 30.00</span>
+                    </div>
+                    <div class="ramen-card-body">
+                        <div class="ramen-header-info">
+                            <div class="ramen-jp-title">トリュフ ラーメン</div>
+                            <h3 class="ramen-title">Yummy Truffle Ramen</h3>
+                        </div>
+                        <p class="ramen-desc" data-i18n="bestseller_1_desc">
+                            Bestseller nombor satu kegemaran ramai. Gabungan mewah hirisan itik lembut, black truffle wangi, cendawan shiitake, dan onsen tamago berkilau.
+                        </p>
+                        <div class="ramen-ingredients">
+                            <span class="ing-pill" data-i18n="tag_black_truffle">Black Truffle</span>
+                            <span class="ing-pill" data-i18n="tag_smoked_duck">Itik Salai</span>
+                            <span class="ing-pill" data-i18n="tag_shiitake">Cendawan Shiitake</span>
+                            <span class="ing-pill" data-i18n="tag_onsen_egg">Onsen Tamago</span>
+                        </div>
+                        <div class="ramen-card-actions">
+                            <button class="btn-card-view" onclick="window.kinguApp.openDishModal('yummy_truffle')">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                                <span data-i18n="btn_view_details">Lihat Perincian & Ramuan</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Yuzu Lover Ramen -->
+                <div class="ramen-card">
+                    <div class="ramen-img-wrap">
+                        <img src="assets/images/kingu_yuzu_lover_real.jpg" alt="Yuzu Lover Ramen" class="ramen-img">
+                        <span class="ramen-tag-floating" data-i18n="bestseller_2_tag">Citrus Refreshing</span>
+                        <span class="ramen-price-floating">RM 28.00</span>
+                    </div>
+                    <div class="ramen-card-body">
+                        <div class="ramen-header-info">
+                            <div class="ramen-jp-title">柚子 ラーメン</div>
+                            <h3 class="ramen-title">Yuzu Lover Ramen</h3>
+                        </div>
+                        <p class="ramen-desc" data-i18n="bestseller_2_desc">
+                            Sensasi sitrus yuzu yang terang dan menyegarkan! Kuah ayam jernih berperisa dipadankan dengan hirisan buah yuzu, isi ayam empuk dan telur ramen.
+                        </p>
+                        <div class="ramen-ingredients">
+                            <span class="ing-pill" data-i18n="tag_fresh_yuzu">Hirisan Yuzu Segar</span>
+                            <span class="ing-pill" data-i18n="tag_tender_chicken">Ayam Lembut</span>
+                            <span class="ing-pill" data-i18n="tag_tamago">Ajitsuke Tamago</span>
+                            <span class="ing-pill" data-i18n="tag_greens">Sayur Hijau Segar</span>
+                        </div>
+                        <div class="ramen-card-actions">
+                            <button class="btn-card-view" onclick="window.kinguApp.openDishModal('yuzu_lover')">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                                <span data-i18n="btn_view_details">Lihat Perincian & Ramuan</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Mala Beef Ramen -->
+                <div class="ramen-card">
+                    <div class="ramen-img-wrap">
+                        <img src="assets/images/mala_beef_ramen.jpg?v=real-mala-beef" alt="Mala Beef Ramen" class="ramen-img">
+                        <span class="ramen-tag-floating" data-i18n="bestseller_3_tag">Fiery Szechuan</span>
+                        <span class="ramen-price-floating">RM 30.00</span>
+                    </div>
+                    <div class="ramen-card-body">
+                        <div class="ramen-header-info">
+                            <div class="ramen-jp-title">麻辣 牛肉 ラーメン</div>
+                            <h3 class="ramen-title">Mala Beef Ramen</h3>
+                        </div>
+                        <p class="ramen-desc" data-i18n="bestseller_3_desc">
+                            Untuk penggemar pedas sejati! Daging lembu braised yang kaya rasa dalam sup lada mala Szechuan berapi dengan bijan panggang dan sayur segar.
+                        </p>
+                        <div class="ramen-ingredients">
+                            <span class="ing-pill" data-i18n="tag_braised_beef">Daging Rebus Lembut</span>
+                            <span class="ing-pill" data-i18n="tag_mala_oil">Minyak Mala Szechuan</span>
+                            <span class="ing-pill" data-i18n="tag_bok_choy">Bok Choy</span>
+                            <span class="ing-pill" data-i18n="tag_ramen_egg">Telur Ramen</span>
+                        </div>
+                        <div class="ramen-card-actions">
+                            <button class="btn-card-view" onclick="window.kinguApp.openDishModal('mala_beef')">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                                <span data-i18n="btn_view_details">Lihat Perincian & Ramuan</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==========================================================================
+       FULL MENU SECTION
+       ========================================================================== -->
+    <section class="section-block" id="full-menu">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-eyebrow" data-i18n="menu_eyebrow">Senarai Penuh & Telus</span>
+                <h2 class="section-title" data-i18n="menu_title">Menu Kingu Ramen</h2>
+                <p class="section-desc" data-i18n="menu_desc">
+                    Semua 22 item hidangan berharga rasmi dari Google Listing. Terokai katalog menu lengkap, ramuan, tahap kepedasan dan harga.
+                </p>
+            </div>
+
+            <div class="menu-controls">
+                <div class="menu-category-tabs">
+                    <button class="menu-tab active" data-category="all" data-i18n="menu_tab_all">Semua (22)</button>
+                    <button class="menu-tab" data-category="ramen" data-i18n="menu_tab_ramen">Ramen (7)</button>
+                    <button class="menu-tab" data-category="snacks" data-i18n="menu_tab_snacks">Snek & Gyoza (10)</button>
+                    <button class="menu-tab" data-category="rice" data-i18n="menu_tab_rice">Hidangan Nasi (2)</button>
+                    <button class="menu-tab" data-category="drinks" data-i18n="menu_tab_drinks">Teh Buah & Minuman (7)</button>
+                </div>
+
+                <div class="menu-search-box">
+                    <svg class="search-icon-pos" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="text" id="menu-search-input" class="menu-search-input" placeholder="Cari hidangan (cth: Gyoza, Yuzu, Truffle)..." data-i18n-placeholder="menu_search_placeholder">
+                </div>
+            </div>
+
+            <div class="menu-items-grid" id="menu-grid">
+                <!-- Dynamically rendered by app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       NEW: KONG-PANIONS VIP PASS SECTION
+       ========================================================================== -->
+    <section class="section-block" id="vip-club" style="background: rgba(14, 14, 22, 0.4);">
+        <div class="container">
+            <div class="vip-pass-card-container">
+                <div>
+                    <span class="vip-badge-ribbon" data-i18n="vip_ribbon">Eksklusif Komuniti Kingu Kongu</span>
+                    <h2 class="section-title vip-main-title" data-i18n="vip_title">Dapatkan Pas VIP "Kong-panions"</h2>
+                    <p class="section-desc vip-main-desc" data-i18n="vip_desc">
+                        Sebagai penghargaan kepada komuniti <em>"Kong-panions"</em> yang menamakan Kingu Ramen, daftarkan nama anda untuk menuntut <strong>3 Ketul Gyoza Rangup Percuma</strong> bersama pesanan ramen pertama anda di outlet The Campus Ampang.
+                    </p>
+
+                    <div class="vip-form-box">
+                        <input type="text" id="vip-input-name" class="form-input" placeholder="Nama Anda (cth: Aiman Hakimi)" data-i18n-placeholder="vip_name_placeholder">
+                        <input type="tel" id="vip-input-phone" class="form-input" placeholder="Nombor WhatsApp (cth: 012-3456789)" data-i18n-placeholder="vip_phone_placeholder">
+                        <button class="btn-vip-generate" onclick="window.kinguApp.generateKongpanionsPass()">
+                            <span data-i18n="vip_btn_generate">Jana Pas VIP Digital Saya</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="vip-pass-ticket" id="vip-ticket-preview">
+                    <div class="ticket-foil-sheen"></div>
+                    <div class="ticket-header">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <img src="assets/images/kingu_logo_mascot.jpg" alt="Logo Kingu" class="ticket-logo-round">
+                            <span class="ticket-brand">KINGU RAMEN</span>
+                        </div>
+                        <span style="color: var(--accent-gold); font-weight: 800; font-size: 0.85rem;" id="vip-pass-serial">KR-VIP-8892</span>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px;" data-i18n="vip_status_label">Status Pas:</span>
+                        <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.4rem;" id="vip-ticket-name-display" data-i18n="vip_status_member">Kong-panion Member</h3>
+                        <p style="font-size: 0.82rem; color: var(--text-secondary);" id="vip-ticket-sub-display" data-i18n="vip_sub_display">Masukkan nama di sebelah untuk mengaktifkan pas peribadi.</p>
+                    </div>
+                    <div class="ticket-perk-box">
+                        <h4 data-i18n="vip_perk_title">3 Ketul Gyoza Percuma</h4>
+                        <p data-i18n="vip_perk_desc">Ditebus semasa menikmati semangkuk ramen di The Campus Ampang (Lot G-07).</p>
+                    </div>
+                    <div class="ticket-action-btns">
+                        <button class="btn-action-sm" id="btn-copy-vip" onclick="window.kinguApp.copyVipCode()">
+                            <span data-i18n="vip_btn_copy">Salin Kod Pas</span>
+                        </button>
+                        <button class="btn-action-sm" id="btn-share-vip" onclick="window.kinguApp.shareVipWhatsApp()">
+                            <span data-i18n="vip_btn_share">Kongsi ke WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       HALAL PROMISE & BRAND COMMUNITY STORY
+       ========================================================================== -->
+    <section class="section-block" id="halal-story">
+        <div class="container">
+            <div class="halal-brand-wrapper">
+                <div class="halal-card-spotlight">
+                    <div class="halal-clean-badge">
+                        <span class="halal-badge-check">✓</span>
+                        <span data-i18n="halal_badge_text">100% Halal</span>
+                    </div>
+                    <span class="section-eyebrow" style="color: #48e5d6;" data-i18n="halal_eyebrow">Jaminan Integriti Bahan</span>
+                    <h3 class="halal-title" data-i18n="halal_title">Janji Halal & Mesra Muslim</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.65; font-size: clamp(0.78rem, 0.9vw, 0.88rem);" data-i18n="halal_intro">
+                        Kingu Ramen komited menyediakan hidangan Jepun yang suci, bersih, dan mematuhi standard pemakanan Muslim di Malaysia:
+                    </p>
+
+                    <ul class="halal-points">
+                        <li class="halal-point-item">
+                            <div class="check-icon-box">✓</div>
+                            <div><strong data-i18n="halal_p1_title">100% Bebas Daging & Lemak Khinzir</strong> — <span data-i18n="halal_p1_desc">Disediakan dalam persekitaran dapur khas tanpa sebarang elemen porcine.</span></div>
+                        </li>
+                        <li class="halal-point-item">
+                            <div class="check-icon-box">✓</div>
+                            <div><strong data-i18n="halal_p2_title">Sifar Alkohol & Mirin Terlarang</strong> — <span data-i18n="halal_p2_desc">Kuah ramen kami dirumus khas menggunakan bahan masakan halal yang disahkan.</span></div>
+                        </li>
+                        <li class="halal-point-item">
+                            <div class="check-icon-box">✓</div>
+                            <div><strong data-i18n="halal_p3_title">Pembekal Daging Ayam & Lembu Halal Sah</strong> — <span data-i18n="halal_p3_desc">Semua bekalan protein utama diperoleh daripada pembekal berlesen di Malaysia.</span></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="story-card-box">
+                    <div class="story-text-pane">
+                        <span class="section-eyebrow" data-i18n="story_eyebrow">Dilahirkan Bersama Komuniti</span>
+                        <h3 class="section-title" style="font-size: clamp(1.4rem, 2vw, 2rem);" data-i18n="story_title">Kisah Kingu Ramen</h3>
+                        <p class="story-quote" data-i18n="story_quote">
+                            "Jenama ini tidak sekadar dilancarkan kepada pelanggan, ia dibina bersama komuniti."
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 10px; font-size: clamp(0.76rem, 0.85vw, 0.84rem);" data-i18n="story_p1">
+                            Diasaskan oleh pasukan di sebalik jenama izakaya terkenal Kingu Kongu, konsep ramen ini dilahirkan daripada jemputan terbuka kepada komuniti setia "Kong-panions" untuk memilih nama dan mengundi logo rasmi.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.6; font-size: clamp(0.76rem, 0.85vw, 0.84rem);" data-i18n="story_p2">
+                            Pilihan komuniti jatuh pada maskot Kingu Ramen — melambangkan keakraban keluarga, keselesaan mangkuk ramen panas, dan kualiti yang sentiasa dipercayai.
+                        </p>
+                    </div>
+                    <div class="story-logo-badge-wrap">
+                        <img src="assets/images/kingu_logo_mascot.jpg" alt="Logo Maskot Kingu Ramen" class="story-round-logo">
+                        <span class="story-logo-caption" data-i18n="story_logo_caption">Maskot Rasmi Kingu Ramen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       THE CAMPUS AMPANG EXPERIENCE & GALLERY
+       ========================================================================== -->
+    <section class="section-block" id="experience">
+        <!-- Background Storefront Image with Luxury Dark Overlay -->
+        <div class="experience-bg-wrap">
+            <img src="assets/images/kingu_storefront_real.jpg" class="experience-bg-img" alt="Kingu Ramen Storefront Ambient">
+            <div class="experience-bg-overlay"></div>
+        </div>
+
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-eyebrow" data-i18n="exp_eyebrow">Ruang & Pengalaman</span>
+                <h2 class="section-title" data-i18n="exp_title">Suasana Izakaya Ampang</h2>
+                <p class="section-desc" data-i18n="exp_desc">
+                    Nikmati mangkuk ramen panas anda di kaunter terbuka bersama chef, ruang makan selesa dalaman atau bersantai di bawah bintang di ruang legar luar The Campus Ampang.
+                </p>
+            </div>
+
+            <div class="gallery-mosaic">
+                <div class="gallery-tile">
+                    <img src="assets/images/kingu_ramen_counter_trio.jpg" alt="Barisan Ramen Signature di Kaunter Izakaya">
+                    <div class="gallery-overlay-badge">
+                        <h4 data-i18n="gallery_1_title">Bar Kaunter Chef & Trio Ramen</h4>
+                        <p data-i18n="gallery_1_desc">Suasana izakaya autentik di The Campus Ampang</p>
+                    </div>
+                </div>
+
+                <div class="gallery-tile">
+                    <img src="assets/images/kingu_salmon_mentai_real.jpg" alt="Torched Salmon Mentai Nigiri">
+                    <div class="gallery-overlay-badge">
+                        <h4 data-i18n="gallery_2_title">Torched Salmon Mentai</h4>
+                        <p data-i18n="gallery_2_desc">Disalai segar dengan sos mentaiko berkrim & halia jeruk</p>
+                    </div>
+                </div>
+
+                <div class="gallery-tile">
+                    <img src="assets/images/kingu_karaage_chicken_real.jpg" alt="Crispy Spicy Tori Karaage">
+                    <div class="gallery-overlay-badge">
+                        <h4 data-i18n="gallery_3_title">Crispy Tori Karaage & Spicy Glaze</h4>
+                        <p data-i18n="gallery_3_desc">Ayam goreng rangup bersalut sos istimewa bersama salad segar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       GOOGLE DINER REVIEWS
+       ========================================================================== -->
+    <section class="section-block" id="reviews">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-eyebrow" data-i18n="reviews_eyebrow">Kepuasan Pelanggan</span>
+                <h2 class="section-title" data-i18n="reviews_title">Apa Kata Mereka di Google</h2>
+                <p class="section-desc" data-i18n="reviews_desc">
+                    Dinilai 4.7 daripada 5.0 bintang oleh lebih 86 penggemar ramen di Google Reviews.
+                </p>
+            </div>
+
+            <!-- Review Filter Pills -->
+            <div class="review-filter-tabs">
+                <button class="review-filter-pill active" onclick="window.kinguApp.filterReviews('all', this)" data-i18n="review_filter_all">Semua Ulasan (86+)</button>
+                <button class="review-filter-pill" onclick="window.kinguApp.filterReviews('truffle', this)" data-i18n="review_filter_truffle">Truffle & Broth</button>
+                <button class="review-filter-pill" onclick="window.kinguApp.filterReviews('halal', this)" data-i18n="review_filter_halal">100% Halal</button>
+                <button class="review-filter-pill" onclick="window.kinguApp.filterReviews('vibe', this)" data-i18n="review_filter_vibe">Suasana & Outdoor</button>
+            </div>
+
+            <div class="reviews-grid" id="reviews-grid">
+                <div class="story-card-box review-card-tilt" data-review-category="truffle">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-quote-text" data-i18n="review_1_quote">
+                        "Truffle ramen dia memang padu teruk! Bau truffle semerbak, kuah rich dan tak muak langsung. Senang hati makan sebab Halal dan bersih. Staff pun sangat friendly."
+                    </p>
+                    <div class="review-author-wrap">
+                        <h5 class="review-author-name">Aiman H.</h5>
+                        <span class="review-badge-verified" data-i18n="verified_review">Ulasan Google Sah</span>
+                    </div>
+                </div>
+
+                <div class="story-card-box review-card-tilt" data-review-category="halal">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-quote-text" data-i18n="review_2_quote">
+                        "Yuzu Lover Ramen sangat refreshing. Jarang jumpa ramen halal dengan balance rasa citrus macam ni dekat KL. Gyoza rangup dan Salmon Mentai Ball wajib order!"
+                    </p>
+                    <div class="review-author-wrap">
+                        <h5 class="review-author-name">Nurul S.</h5>
+                        <span class="review-badge-verified" data-i18n="verified_review">Ulasan Google Sah</span>
+                    </div>
+                </div>
+
+                <div class="story-card-box review-card-tilt" data-review-category="vibe">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-quote-text" data-i18n="review_3_quote">
+                        "Suka vibe kedai dekat The Campus Ampang, outdoor seating dia tenang waktu malam. Mala beef ramen cukup kick pedas dia. Harga sangat berbaloi untuk kualiti ni."
+                    </p>
+                    <div class="review-author-wrap">
+                        <h5 class="review-author-name">Farid Z.</h5>
+                        <span class="review-badge-verified" data-i18n="verified_review">Ulasan Google Sah</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       FAQ SECTION
+       ========================================================================== -->
+    <section class="section-block" id="faq" style="background: rgba(14, 14, 22, 0.4);">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-eyebrow" data-i18n="faq_eyebrow">Soalan Lazim</span>
+                <h2 class="section-title" data-i18n="faq_title">Pertanyaan Kerap Ditanya</h2>
+                <p class="section-desc" data-i18n="faq_desc">
+                    Semua maklumat penting mengenai status halal, waktu operasi, dan panduan lawatan ke Kingu Ramen.
+                </p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item open">
+                    <div class="faq-question">
+                        <span data-i18n="faq_q1">Adakah Kingu Ramen Halal & Mesra Muslim?</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer" data-i18n="faq_a1">
+                        Ya! Kingu Ramen dibangunkan sebagai konsep ramen mesra Muslim sepenuhnya (Muslim-friendly). Semua bekalan ayam dan daging lembu diperoleh daripada pembekal berlesen halal sah, tanpa sebarang daging/lemak khinzir (pork-free/lard-free), dan tanpa alkohol atau mirin terlarang.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-i18n="faq_q2">Adakah perlu membuat tempahan meja terlebih dahulu?</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer" data-i18n="faq_a2">
+                        Kami menerima kedua-dua walk-in dan tempahan meja awal. Pada waktu puncak makan malam (7:00 PM - 9:00 PM) dan hujung minggu, kami mengesyorkan anda membuat tempahan meja awal melalui butang "Tempah Meja" untuk memastikan tempat duduk anda disediakan.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-i18n="faq_q3">Bagaimana dengan tempat letak kenderaan di The Campus Ampang?</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer" data-i18n="faq_a3">
+                        The Campus Ampang mempunyai kawasan parkir kereta bertingkat dan terbuka yang sangat luas, selesa, serta selamat dengan kawalan keselamatan 24 jam. Kedai kami terletak tepat di Ground Floor (Lot G-07), berhampiran pintu masuk utama.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span data-i18n="faq_q4">Adakah pilihan menu mesra kanak-kanak?</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer" data-i18n="faq_a4">
+                        Ya, kami mempunyai menu kanak-kanak yang mesra selera (tidak pedas) seperti Special Prawn Egg Rice, Shoyu Ramen, dan Gyoza Ayam lembut yang digemari seisi keluarga.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       LOCATION & LIVE CROWD METER (THE CAMPUS G-07)
+       ========================================================================== -->
+    <section class="section-block" id="location">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-eyebrow" data-i18n="loc_eyebrow">Kunjungi Kami Hari Ini</span>
+                <h2 class="section-title" data-i18n="loc_title">Lokasi & Waktu Operasi</h2>
+                <p class="section-desc" data-i18n="loc_desc">
+                    Terletak di Ground Floor The Campus Ampang dengan kemudahan tempat letak kenderaan yang luas dan zon mesra pejalan kaki.
+                </p>
+            </div>
+
+            <div class="location-card-grid">
+                <!-- Details Pane -->
+                <div class="location-info-pane">
+                    <div class="info-item-block">
+                        <div class="info-icon-disc">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="info-text-details">
+                            <h4 data-i18n="loc_address_label">Alamat Rasmi</h4>
+                            <p>
+                                Lot G-07, Ground Floor, The Campus Ampang,<br>
+                                Batu 5, Jalan Kerja Air Lama, Ukay Heights,<br>
+                                68000 Ampang, Selangor
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-item-block">
+                        <div class="info-icon-disc">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="info-text-details">
+                            <h4 data-i18n="loc_contact_label">Hubungi / Tempahan Meja</h4>
+                            <p>
+                                <a href="tel:0182875277" style="color: var(--accent-gold); font-weight: 700; text-decoration: none;">018-287 5277</a><br>
+                                WhatsApp: <a href="https://wa.me/60182875277" target="_blank" style="color: #25d366; text-decoration: none;">+6018-287 5277</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Live Crowd Status Widget -->
+                    <div class="crowd-meter-card">
+                        <div class="crowd-header">
+                            <h5 style="font-family: var(--font-heading); color: #fff; font-size: 0.95rem;" data-i18n="loc_crowd_title">Status Kepadatan Outlet</h5>
+                            <span id="live-crowd-badge" class="crowd-badge-status status-comfortable">Suasana Santai</span>
+                        </div>
+                        <p id="live-crowd-desc" style="font-size: 0.85rem; color: var(--text-secondary);">
+                            Tempat duduk sedia ada untuk walk-in tanpa perlu menunggu lama.
+                        </p>
+                        <div class="crowd-timeline-bar">
+                            <span class="time-slot-segment" style="background: #2ec4b6;" title="11:30 AM - 2:00 PM (Sederhana)"></span>
+                            <span class="time-slot-segment" style="background: #2ec4b6;" title="2:00 PM - 5:30 PM (Santai)"></span>
+                            <span class="time-slot-segment" style="background: #e63946;" title="6:30 PM - 8:30 PM (Puncak Malam)"></span>
+                            <span class="time-slot-segment" style="background: #f5a623;" title="8:30 PM - 10:00 PM (Sederhana)"></span>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons-cluster">
+                        <a href="https://waze.com/ul?q=The%20Campus%20Ampang" target="_blank" class="btn-nav-action btn-waze">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                            <span data-i18n="loc_waze">Buka di Waze</span>
+                        </a>
+                        <a href="https://maps.google.com/?q=The+Campus+Ampang" target="_blank" class="btn-nav-action btn-gmaps">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                            <span data-i18n="loc_gmaps">Google Maps</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Map Pane -->
+                <div class="location-map-pane">
+                    <iframe 
+                        title="Peta Lokasi Kingu Ramen The Campus Ampang"
+                        src="https://maps.google.com/maps?q=The%20Campus%20Ampang%2C%20Jalan%20Kerja%20Air%20Lama%2C%20Ampang&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       TABLE RESERVATION MODAL
+       ========================================================================== -->
+    <div class="reservation-modal-overlay" id="reservation-modal-overlay">
+        <div class="reservation-card-box">
+            <button class="modal-close-btn" id="reservation-modal-close">✕</button>
+            <div style="text-align: center; margin-bottom: 24px;">
+                <span class="section-eyebrow" style="color: var(--accent-gold);" data-i18n="vip_status_member">Tempahan Meja VIP</span>
+                <h3 style="font-family: var(--font-heading); font-size: 2rem; color: #fff;" data-i18n="res_modal_title">Tempah Meja di Kingu Ramen</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 6px;" data-i18n="res_modal_desc">
+                    Nikmati hidangan ramen panas di The Campus Ampang tanpa perlu beratur panjang.
+                </p>
+            </div>
+
+            <form id="table-reservation-form" class="reservation-form">
+                <!-- Zone Selection -->
+                <div class="form-group-wrap">
+                    <label class="form-label" data-i18n="res_label_zone">Pilih Zon Duduk Kegemaran:</label>
+                    <div class="zone-selector-grid">
+                        <div class="zone-choice-card active" data-zone="Kaunter Chef Izakaya">
+                            <h5 data-i18n="res_zone_chef">Kaunter Chef</h5>
+                            <p data-i18n="res_zone_chef_sub">Melihat ramen dimasak</p>
+                        </div>
+                        <div class="zone-choice-card" data-zone="Meja Ruang Dalam (Cozy Booth)">
+                            <h5 data-i18n="res_zone_booth">Cozy Booth</h5>
+                            <p data-i18n="res_zone_booth_sub">Selesa & berhawa dingin</p>
+                        </div>
+                        <div class="zone-choice-card" data-zone="Patio Luar The Campus">
+                            <h5 data-i18n="res_zone_patio">Patio Luar</h5>
+                            <p data-i18n="res_zone_patio_sub">Angin malam santai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="form-group-wrap">
+                        <label class="form-label" data-i18n="res_label_name">Nama Penuh:</label>
+                        <input type="text" id="res-name" class="form-input" placeholder="Nama anda" data-i18n-placeholder="res_placeholder_name" required>
+                    </div>
+                    <div class="form-group-wrap">
+                        <label class="form-label" data-i18n="res_label_phone">Nombor Telefon / WhatsApp:</label>
+                        <input type="tel" id="res-phone" class="form-input" placeholder="01X-XXXXXXX" data-i18n-placeholder="res_placeholder_phone" required>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+                    <div class="form-group-wrap">
+                        <label class="form-label" data-i18n="res_label_date">Tarikh:</label>
+                        <input type="date" id="res-date" class="form-input" required>
+                    </div>
+                    <div class="form-group-wrap">
+                        <label class="form-label" data-i18n="res_label_time">Waktu Makan:</label>
+                        <select id="res-time" class="form-select" required>
+                            <option value="12:00 PM" data-i18n="res_time_lunch_1">12:00 PM (Makan Tengahari)</option>
+                            <option value="01:30 PM" data-i18n="res_time_lunch_2">01:30 PM (Makan Tengahari)</option>
+                            <option value="06:30 PM" data-i18n="res_time_dinner_1">06:30 PM (Makan Malam)</option>
+                            <option value="07:30 PM" selected data-i18n="res_time_dinner_2">07:30 PM (Puncak Malam)</option>
+                            <option value="08:45 PM" data-i18n="res_time_dinner_3">08:45 PM (Makan Malam)</option>
+                        </select>
+                    </div>
+                    <div class="form-group-wrap">
+                        <label class="form-label" data-i18n="res_label_pax">Bilangan Pax:</label>
+                        <select id="res-pax" class="form-select">
+                            <option value="1-2" data-i18n="res_pax_12">1 - 2 Orang</option>
+                            <option value="3-4" selected data-i18n="res_pax_34">3 - 4 Orang</option>
+                            <option value="5-6" data-i18n="res_pax_56">5 - 6 Orang</option>
+                            <option value="7+" data-i18n="res_pax_7plus">7+ Orang (Keluarga)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group-wrap">
+                    <label class="form-label" data-i18n="res_label_notes">Nota Khas (Contoh: Baby chair, sambutan hari lahir):</label>
+                    <input type="text" id="res-notes" class="form-input" placeholder="Tinggalkan pesanan ringkas jika ada..." data-i18n-placeholder="res_placeholder_notes">
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">
+                    <span data-i18n="res_btn_submit">Hantar Tempahan ke WhatsApp Rasmi</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       DISH QUICK VIEW MODAL
+       ========================================================================== -->
+    <div class="dish-modal-overlay" id="dish-modal-overlay">
+        <div class="dish-modal-box">
+            <button class="modal-close-btn" id="dish-modal-close">✕</button>
+            <div class="modal-img-pane">
+                <img id="modal-dish-img" src="assets/images/kingu_shoyu_truffle_real.jpg" alt="Dish Preview">
+            </div>
+            <div class="modal-content-pane">
+                <div>
+                    <span id="modal-dish-jp" style="font-family: var(--font-jp); color: var(--accent-gold); font-size: 0.95rem; font-weight: 600;"></span>
+                    <h3 id="modal-dish-title" style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: #fff; margin-top: 4px;"></h3>
+                    <div id="modal-dish-price" style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--accent-gold-light); margin-top: 6px;"></div>
+                </div>
+                <p id="modal-dish-desc" style="color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem;"></p>
+                <div>
+                    <h5 style="color: #fff; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;" data-i18n="dish_modal_ingredients">Bahan Utama & Alergen:</h5>
+                    <div id="modal-dish-ingredients" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+                </div>
+                <button class="btn-secondary" style="width: 100%; justify-content: center; margin-top: 14px;" onclick="window.kinguApp.closeDishModal()">
+                    <span data-i18n="dish_modal_close">Tutup Perincian</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+    <footer class="site-footer" id="footer-section">
+        <div class="container">
+            <div class="footer-top-grid">
+                <!-- Brand Summary -->
+                <div class="footer-brand-pane">
+                    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+                        <img src="assets/images/kingu_logo_mascot.jpg" alt="Logo Kingu Ramen" class="footer-logo-img">
+                        <span class="brand-name" style="font-size: 1.35rem;">KINGU RAMEN</span>
+                    </div>
+                    <p data-i18n="footer_desc">
+                        Konsep ramen halal premium oleh Kingu Kongu di The Campus Ampang. Mengutamakan bahan berkualiti tinggi, sup autentik yang berkhasiat, dan rasa yang memikat setiap hati.
+                    </p>
+                    <div style="font-size: 0.88rem; color: var(--accent-gold); font-weight: 800;" data-i18n="footer_quote">
+                        “No ramen no life!”
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="footer-col-title" data-i18n="footer_quick_links">Pautan Pantas</h4>
+                    <ul class="footer-link-list">
+                        <li><a href="#signature" data-i18n="nav_bestseller">Best Seller</a></li>
+                        <li><a href="#full-menu" data-i18n="nav_menu">Menu</a></li>
+                        <li><a href="#vip-club" data-i18n="nav_vip">VIP</a></li>
+                        <li><a href="#location" data-i18n="nav_contact">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Social -->
+                <div>
+                    <h4 class="footer-col-title" data-i18n="footer_contact">Hubungan</h4>
+                    <ul class="footer-link-list">
+                        <li><a href="https://instagram.com/kinguramen.my" target="_blank">Instagram @kinguramen.my</a></li>
+                        <li><a href="https://instagram.com/kingukongu.my" target="_blank">Parent @kingukongu.my</a></li>
+                        <li><a href="tel:0182875277" data-i18n="footer_phone">Telefon: 018-287 5277</a></li>
+                        <li><a href="https://wa.me/60182875277" target="_blank" data-i18n="footer_wa">WhatsApp Rasmi</a></li>
+                    </ul>
+                </div>
+
+                <!-- Parent Brand -->
+                <div>
+                    <h4 class="footer-col-title" data-i18n="footer_brand_family">Keluarga Jenama</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 14px;" data-i18n="footer_brand_family_desc">
+                        Dibina dengan bangga bersama komuniti <strong>Kong-panions</strong> Kingu Kongu.
+                    </p>
+                    <span class="badge-tag" style="border-color: var(--border-gold-subtle); color: var(--accent-gold-light);" data-i18n="footer_lot">
+                        Lot G-07 Level G, Ampang
+                    </span>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div data-i18n="footer_copyright">© 2026 Kingu Ramen by Kingu Kongu. Hak Cipta Terpelihara.</div>
+                <div data-i18n="footer_bottom_lot">The Campus Ampang · Lot G-07</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+       HALAL TRANSPARENCY & ASSURANCE MODAL
+       ========================================================================== -->
+    <div class="halal-modal-overlay" id="halal-modal-overlay">
+        <div class="halal-modal-box">
+            <button class="modal-close-btn" id="halal-modal-close" onclick="window.kinguApp.closeHalalModal()">✕</button>
+            
+            <div class="halal-modal-header">
+                <div class="halal-stamp-badge" data-i18n="halal_badge_text">100% HALAL</div>
+                <h3 style="font-family: var(--font-heading); font-size: 1.85rem; color: #fff; margin-top: 10px;" data-i18n="halal_modal_title">Integriti & Jaminan Halal</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 6px;" data-i18n="halal_modal_desc">
+                    Komitmen penuh Kingu Ramen by Kingu Kongu terhadap penyediaan makanan Jepun yang bersih, suci & mesra Muslim di Malaysia.
+                </p>
+            </div>
+
+            <div class="halal-guarantee-grid">
+                <div class="guarantee-card">
+                    <div class="guarantee-icon" style="font-weight: 800; font-size: 1.1rem; color: var(--accent-gold);">01</div>
+                    <div class="guarantee-text">
+                        <h4 data-i18n="halal_g1_title">100% Pork-Free & Lard-Free</h4>
+                        <p data-i18n="halal_g1_desc">Dapur dan semua peralatan memasak kami beroperasi dalam persekitaran yang bebas sepenuhnya daripada sebarang bahan berkaitan khinzir.</p>
+                    </div>
+                </div>
+
+                <div class="guarantee-card">
+                    <div class="guarantee-icon" style="font-weight: 800; font-size: 1.1rem; color: var(--accent-gold);">02</div>
+                    <div class="guarantee-text">
+                        <h4 data-i18n="halal_g2_title">Sifar Alkohol & Mirin Terlarang</h4>
+                        <p data-i18n="halal_g2_desc">Kuah ramen kami dirumus secara saintifik tanpa setitis pun alkohol masakan atau mirin konvensional, menggantikannya dengan ekstrak buah & gula semulajadi.</p>
+                    </div>
+                </div>
+
+                <div class="guarantee-card">
+                    <div class="guarantee-icon" style="font-weight: 800; font-size: 1.1rem; color: var(--accent-gold);">03</div>
+                    <div class="guarantee-text">
+                        <h4 data-i18n="halal_g3_title">Pembekal Sah Berlesen JAKIM</h4>
+                        <p data-i18n="halal_g3_desc">Semua bekalan ayam dan daging lembu diperoleh daripada pembekal utama tempatan yang memegang sijil Halal JAKIM sah yang diperakui.</p>
+                    </div>
+                </div>
+
+                <div class="guarantee-card">
+                    <div class="guarantee-icon" style="font-weight: 800; font-size: 1.1rem; color: var(--accent-gold);">04</div>
+                    <div class="guarantee-text">
+                        <h4 data-i18n="halal_g4_title">Latihan Pengendalian Makanan & Kebersihan</h4>
+                        <p data-i18n="halal_g4_desc">Krew dapur mematuhi amalan kebersihan ketat (Good Hygiene Practices) dan menerima suntikan serta latihan keselamatan makanan berkanun.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px; text-align: center;">
+                <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="window.kinguApp.closeHalalModal()">
+                    <span data-i18n="halal_modal_btn">Faham & Kembali Menjamu Selera</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="three_scene.js?v=polar-fix-v5"></script>
+    <script src="translations.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
